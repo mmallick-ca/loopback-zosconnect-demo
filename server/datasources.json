@@ -1,0 +1,36 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "zosConnAPI": {
+    "name": "zosConnAPI",
+    "connector": "rest",
+    "operations": [
+      {
+        "functions": {
+          "getHotel": [
+            "location"
+          ]
+        },
+        "template": {
+          "method": "GET",
+          "url": "https://zserveros.centers.ihost.com:33620/travel/hotels?",
+          "headers": {
+             "accepts":"application/json",
+             "content-type": "application/json"
+             },
+          "query": {
+            "radius": "100",
+            "location": "{location}",
+            "id": "0" 
+          },
+          "options": {
+            "useQueryString": true
+          },
+          "responsePath": "$..HOTELS"
+        }
+      }
+    ]
+  } 
+}
